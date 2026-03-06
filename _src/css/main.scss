@@ -1,5 +1,7 @@
 ---
 ---
+
+$base-path: "{{ '' | relative_url }}";
 @import "variables";
 @import "bulma";
 @import "overrides";

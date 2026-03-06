@@ -1,0 +1,53 @@
+// 1. Define Adwaita Sans @font-face using the $base-path variable
+@font-face {
+  font-family: 'Adwaita Sans';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaSans-Regular.woff2") format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adwaita Sans';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaSans-Italic.woff2") format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// 2. Define Adwaita Mono @font-face using the $base-path variable
+@font-face {
+  font-family: 'Adwaita Mono';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaMono-Regular.woff2") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adwaita Mono';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaMono-Italic.woff2") format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adwaita Mono';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaMono-Bold.woff2") format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Adwaita Mono';
+  src: url("#{$base-path}/assets/fonts/adwaita/AdwaitaMono-BoldItalic.woff2") format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+// 3. Override Bulma Font Variables
+$family-sans-serif: "Adwaita Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$family-monospace: "Adwaita Mono", monospace !default;
