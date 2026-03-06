@@ -6,7 +6,7 @@
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
   </head>
-  <body>
+  <body class="has-navbar-fixed-top">
     {% include navbar.html %}
     {{ content }}
     <script src="{{ '/js/main.js' | relative_url }}"></script>
