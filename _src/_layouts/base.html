@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/vendor/bulma/bulma.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+  </head>
+  <body>
+    {% include navbar.html %}
+    {{ content }}
+    <script src="{{ '/js/main.js' | relative_url }}"></script>
+  </body>
+</html>

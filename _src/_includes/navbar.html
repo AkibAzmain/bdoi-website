@@ -1,0 +1,35 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/logo.svg' | relative_url }}" alt="Logo">
+        Bangladesh Olympiad in Informatics
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{{ '/' | relative_url }}">Home</a>
+        <a class="navbar-item" href="{{ '/2026' | relative_url }}">BdOI 2026</a>
+        <div class="navbar-item has-dropdown is-active">
+          <a class="navbar-link">All BdOIs</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="{{ '/2026' | relative_url }}">BdOI 2026</a>
+            <a class="navbar-item" href="{{ '/2025' | relative_url }}">BdOI 2025</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Register</a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -9,31 +9,32 @@ else
     DOCKER_FLAGS="-it"
 fi
 
-# 1. Check if Gemfile.lock exists
-if [ ! -f "Gemfile.lock" ]; then
-    echo "Gemfile.lock not found. Building image and extracting lockfile..."
-
-    # 2. Rebuild docker image
+# Function to build image and extract Gemfile.lock
+update_lockfile() {
+    echo "Updating Gemfile.lock..."
     docker build -t "$IMAGE_NAME" .
-
-    # Get the gemfile.lock from the image and save it in the folder
-    echo "Extracting Gemfile.lock from image..."
     TEMP_ID=$(docker create "$IMAGE_NAME")
     docker cp "$TEMP_ID:/srv/jekyll/Gemfile.lock" ./Gemfile.lock
     docker rm "$TEMP_ID"
-    
-    echo "Gemfile.lock extracted successfully."
+    echo "Gemfile.lock updated successfully."
+}
+
+# 1. Check if Gemfile.lock exists OR if Gemfile is newer than Gemfile.lock
+if [ ! -f "Gemfile.lock" ]; then
+    echo "Gemfile.lock not found."
+    update_lockfile
+elif [ "Gemfile" -nt "Gemfile.lock" ]; then
+    echo "Gemfile is newer than Gemfile.lock."
+    update_lockfile
 else
-    # Ensure image exists even if lockfile is present
+    # Ensure image exists even if lockfile is up to date
     if [[ "$(docker images -q $IMAGE_NAME 2> /dev/null)" == "" ]]; then
         echo "Image $IMAGE_NAME not found. Building..."
         docker build -t "$IMAGE_NAME" .
     fi
 fi
 
-# 3. Run the docker image
-# If arguments are passed (e.g., ./run-docker.sh bundle exec jekyll build), run them.
-# Otherwise, default to starting the server.
+# 2. Run the docker image
 if [ $# -gt 0 ]; then
     echo "Running custom command: $@"
     docker run $DOCKER_FLAGS --rm \
